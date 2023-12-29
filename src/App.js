@@ -10,10 +10,10 @@ function App() {
   const handleToggle = id => {
     // Update the completed status of a Todo item
     setTodos(prevTodos =>{
-      const updatedTodos = prevTodos.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
-      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+      const updatedTodos1 = prevTodos.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+      localStorage.setItem('todos', JSON.stringify(updatedTodos1));
   
-      return updatedTodos;
+      return updatedTodos1;
     });
   };
 
