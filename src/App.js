@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+import './App.css'; // Import the CSS file
+
 
 function App() {
+  const [todos, setTodos] = useState([]);
+
+  const handleToggle = id => {
+    // Update the completed status of a Todo item
+    setTodos(prevTodos =>{
+      const updatedTodos = prevTodos.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+  
+      return updatedTodos;
+    });
+  };
+
+  const handleDelete = id => {
+    // Remove a Todo item from state
+    setTodos(prevTodos => {
+      const updatedTodos = prevTodos.filter(todo => todo.id !== id);
+  
+      // Update local storage
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+  
+      return updatedTodos;
+    });
+  };
+
+  const handleAdd = text => {
+    const newTodo = { id: Date.now(), text, completed: false };
+    // Add a new Todo item
+    setTodos(prevTodos => [...prevTodos, newTodo]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1>Todo App</h1>
+      <div className='todo-form'>
+        <TodoForm onAdd={handleAdd} />
+      </div>
+        <TodoList todos={todos} onToggle={handleToggle} onDelete={handleDelete} />
     </div>
   );
 }

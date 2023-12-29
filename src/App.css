@@ -1,38 +1,92 @@
-.App {
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+}
+
+.app-container {
+  background-color: #ffe4c1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 30px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  margin: 20px auto;
+  max-width: 600px;
+}
+.individual-todo-container {
+  background-color: #ffe4c1;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  margin: 1px auto;
+  max-width: 550px;
+  overflow: hidden;
+}
+.individual-todo-container input {
+  margin-right: 8px; /* Adjust the margin to provide space between the checkbox and the text */
+}
+
+ .individual-todo-container:hover {
+  background-color: #fcd098;
+  transform: scale(1.05);
+} 
+/* Apply regular white-space: pre-wrap to elements with whitespace in the text */
+.individual-todo-container.whitespace span {
+  white-space: pre-wrap; /* Allow the text to break and wrap to the next line */
+  overflow: hidden; /* Hide the content that overflows the container */
+  font-family: 'Times', serif; /* Use Garamond font */
+
+}
+.individual-todo-container.no-whitespace span {
+  white-space: pre-wrap;  /* Allow the text to break and wrap to the next line */
+  overflow: hidden; /* Hide the content that overflows the container */
+  word-break: break-all; /* Force a line break within words */
+  font-family: 'Times', serif; /* Use Garamond font */
+}
+
+
+h1 {
   text-align: center;
+  color: #333;
+  font-family: 'Garamond', serif; /* Use Garamond font */
+  text-shadow:
+    1px 1px 1px rgba(0, 0, 0, 0.5), /* Right and bottom shadows */
+    -1.5px -1.5px 1.5px rgba(255, 255, 255, 0.8); /* Left and top highlights */
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* TodoForm.css */
+.todo-form {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-form input {
+  width: 330px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px; /* Adjust the border-radius to control the curvature */
+  margin-right: 10px; /* Add some spacing between the input and the button */
+  
+  box-shadow:
+    inset 0 1px 2px rgb(0,0, 0), /* Top highlight */
+    inset 0 -0.5px 0.5px  rgba(255, 191, 0), /* Bottom shadow */
+    0 0px 0px rgb(255, 191, 0); /* Regular outer shadow */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-form button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fcd098;
 }
+
+/* Add any additional styling for TodoForm and TodoList components if needed */
